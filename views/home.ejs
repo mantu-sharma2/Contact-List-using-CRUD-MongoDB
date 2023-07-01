@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= title%>
+    </title>
+    
+  </head> 
+  <body>
+    <h1 style="color:gray ; text-align: center;text-decoration: underline;">Contact List</h1>
+
+    <ul style="text-align:center;align-items: center;">
+      <i class="fa-solid fa-address-book"></i>
+        <% for(var i in contact_list){%>
+           
+              
+              <ul style="background-color:rgb(170, 170, 202); width: 400px; margin-bottom:2px;font-size: 20px;align-items: center;">
+             <div style="align-content: space-around;">
+               <%= contact_list[i].name %>
+              <%= contact_list[i].number %>
+             </div>
+              <a style="font-size: small;" href="/delete-contact/<%= contact_list[i]._id %>">delete</a>
+              </ul>
+            
+            
+          <% } %>
+  
+    </ul>
+
+    <form action="/form-action" method="POST">
+      <input type="text" name="name" placeholder="Enter name" required>
+      <input type="number" name="phone" placeholder="Enter phone" required>
+      <button type="submit">submit</button>
+    </form>
+
+  </body>
+</html>
