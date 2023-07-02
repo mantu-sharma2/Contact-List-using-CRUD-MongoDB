@@ -12,14 +12,14 @@ app.use(express.urlencoded({ extended: true }))  //used to decode the encoded-fo
 
 
 app.set("view engine", "ejs");  //used for rendering static templates.
-app.set('views',path.join(__dirname,'views'))     //connected with relative path
+// app.set('views',path.join(__dirname,'views'))     //connected with relative path
 
 
 
 app.get("/", (req, res) => {    
   Contacts.find({})             //querying db to display
   .then(results=>{
-    return res.render('home', {
+    return res.render(__dirname+'/views/home', {
       title:"Home Page",
       contact_list:results
     });
@@ -50,7 +50,7 @@ app.post('/form-action',(req,res)=>{
 
 app.get('/delete-contact/:id',(req,res)=>{
   const id=req.params.id;
-  console.log(req.params.id);
+  // console.log(req.params.id);
   Contacts.findByIdAndDelete(id)
   .catch(err=>{
     console.log("Error deleting contact",err);
